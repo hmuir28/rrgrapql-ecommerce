@@ -36,13 +36,15 @@ class SignIn extends React.Component {
     return (
       <div className="sign-in">
         <h2>Ya tengo una cuenta</h2>
-        <span>Iniciar sesion con mi correo y contrase;a</span>
+        <span>Iniciar sesion con mi correo y contraseña</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput name="email" type="email" label="correo electrónico" handleChange={this.handleChange} value={this.state.email}  required />
           <FormInput name="password" type="password" label="contraseña" handleChange={this.handleChange} value={this.state.password} required />
-          <CustomButton type="submit"> Iniciar Sesión </CustomButton>
-          <CustomButton onClick={siginInWithGoogle}> {''} Iniciar Sesión con Google {''} </CustomButton>
+          <div className="buttons">
+            <CustomButton type="submit"> Iniciar Sesión </CustomButton>
+            <CustomButton onClick={siginInWithGoogle} isGoogleSignIn> Iniciar Sesión con Google </CustomButton>
+          </div>
         </form>
       </div>
     )
