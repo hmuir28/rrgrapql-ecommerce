@@ -4,7 +4,7 @@ import './sign-in.styles.scss';
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-import { siginInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, siginInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -16,20 +16,26 @@ class SignIn extends React.Component {
     };
   }
 
-  handleSubmit = (evt) => {
+  handleSubmit = async (evt) => {
     evt.preventDefault();
+    
+    const { email, password } = this.state;
 
-    this.setState({
-      email: '',
-      password: ''
-    });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
+        email: '',
+        password: ''
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   handleChange = (evt) => {
     const { value, name } = evt.target;
-    
-    // INFO: [name] allows to bind elements by json attribute name
-    this.setState ( { [name]: value } );
+
+    this.setState({ [name]: value });
   }
 
   render() {
