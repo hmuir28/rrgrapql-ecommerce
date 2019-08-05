@@ -28,17 +28,13 @@ class App extends React.Component {
 
         userRef.onSnapshot(snapshot => {
           setCurrentUser({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
+            id: snapshot.id,
+            ...snapshot.data()
           });
         });
-      } else {
-        setCurrentUser({
-          currentUser: userAuth
-        });
       }
+
+      setCurrentUser(userAuth);
     });
   }
 
@@ -48,7 +44,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App"> 
+      <div> 
       <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
