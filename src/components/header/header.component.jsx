@@ -28,12 +28,7 @@ const Header = ({ currentUser, hidden }) => (
       </Link>
       {
         currentUser ?
-        (<div className="option" onClick={() => {
-          console.log('<<<<<<<<<<<');
-          console.log(currentUser);
-          auth.signOut();
-          console.log('lsllslsl');
-        }}>Cerrar Sesión</div>)
+        (<div className="option" onClick={() => auth.signOut()}>Cerrar Sesión</div>)
         : (<Link className="option" to="/signin">Iniciar Sesión</Link>)
       }
       <CartIcon />
