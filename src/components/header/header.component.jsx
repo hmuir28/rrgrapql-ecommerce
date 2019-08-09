@@ -13,8 +13,6 @@ import { signOutStart } from "../../redux/user/user.action";
 
 import './header.styles.scss';
 
-import { auth } from "../../firebase/firebase.utils";
-
 const Header = ({ currentUser, hidden, signOutStart }) => (
   <div className="header">
     <Link className="logo-container" to="/">
@@ -46,7 +44,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutStart: () => dispatch(signOutStart)
+  signOutStart: () => dispatch(signOutStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
